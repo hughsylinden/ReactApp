@@ -1,23 +1,22 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import Message from "./components/Message"
+import getMessages from "./requests/getMessages"
+import postMessage from "./requests/postMessage"
 import './App.css';
 
 function App() {
   const initialState = { body: "",name:"" }
   const [display, setDisplay] = useState([])
   const [input, setInput] = useState(initialState)
-  useEffect( ()=>{
-     axios.get('http://localhost:8080/messages').then(res=>{
-      setDisplay(res.data)
-    })
+  useEffect(()=>{
+    getMessages(setDisplay)
   },)
 
   const handleSubmit =  (e) =>{
     e.preventDefault();
-     axios.post('http://localhost:8080/messages', {name:input.name,body:input.body}).then(res=>{
-      setDisplay(...[display], res.data)
-    })
+
+    postMessage(display,setDisplay,{name:input.name,body:input.body})
     e.target.reset()
   }
 
