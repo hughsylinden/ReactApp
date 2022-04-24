@@ -10,7 +10,10 @@ function MessageList() {
   const [display, setDisplay] = useState([])
   useEffect(()=>{
     getMessages(setDisplay)
+    console.log('test')
   },[])
+
+
 
   const handleRemove = (id) => {
     deleteMessage(display,setDisplay,id)
