@@ -42,6 +42,7 @@ public class MessageController {
     @PostMapping
     public ResponseEntity createMessage(@RequestBody Message message) throws URISyntaxException {
         Message savedMessage = messageRepository.save(message);
+
         return ResponseEntity.created(new URI("/messages/" + savedMessage.getId())).body(savedMessage);
     }
 
@@ -50,8 +51,7 @@ public class MessageController {
         Message currentMessage = messageRepository.findById(id).orElseThrow(RuntimeException::new);
         currentMessage.setName(message.getName());
         currentMessage.setBody(message.getBody());
-        currentMessage = messageRepository.save(message);
-
+        messageRepository.save(currentMessage);
         return ResponseEntity.ok(currentMessage);
     }
 
