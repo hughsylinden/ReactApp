@@ -1,14 +1,15 @@
- 
-import axios from "axios";
+ import axios from "axios";
 
 const postMessage = (
-    display,setDisplay,body
+    body
 ) => {
+  console.log('hea')
   const endpoint = 'http://localhost:8080/messages';
     axios
     .post(endpoint,body)
     .then((res) => {
-      setDisplay(...[display], res.data)
+      //setDisplay(...[display], res.data)
+      console.log(res)
     })
     .catch((error) => {
       console.log(error)
