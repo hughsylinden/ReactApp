@@ -1,7 +1,6 @@
 import Home from "./components/Home"
-import MessageList from "./components/MessageList"
-import MessageEdit from "./components/MessageEdit"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { MessageList, MessageEdit } from "./components"
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
